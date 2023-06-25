@@ -16,8 +16,6 @@ export const authOptions: NextAuthOptions = {
   ],
   jwt: {
     encode: ({ secret, token }) => {
-      console.log("🚀 ~ file: session.ts:70 ~ export  authOptions: NextAuthOptions.jwt.secret:", secret, token);
-
       const encodedToken = jsonwebtoken.sign(
         {
           ...token,
@@ -29,8 +27,6 @@ export const authOptions: NextAuthOptions = {
       return encodedToken;
     },
     decode: async ({ secret, token }) => {
-      console.log("🚀 ~ file: session.ts:70 ~ decoded token  authOptions: NextAuthOptions.jwt.secret:", secret, token);
-
       const decodedToken = (await jsonwebtoken.verify(token!, secret)) as JWT;
       return decodedToken;
     },
